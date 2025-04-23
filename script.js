@@ -44,12 +44,6 @@ classifyBtn.addEventListener("click", async () => {
   }
 });
 
-// Upload Button
-const uploadBtn = document.getElementById("upload-btn");
-uploadBtn.addEventListener("click", () => {
-  fileInput.click();
-});
-
 // Reset Button
 const resetBtn = document.querySelector(".btn:nth-child(3)");
 resetBtn.addEventListener("click", () => {
