@@ -67,12 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Reset Button
-  const resetBtn = document.querySelector(".btn:nth-child(3)");
+  const resetBtn = document.getElementById("reset-btn");
   resetBtn.addEventListener("click", () => {
     fileInput.value = "";
     labelCell.textContent = "-";
     presentaseCell.textContent = "-";
     deskripsiCell.textContent = "-";
+
+    previewImg.src = "";
+    previewImg.style.display = "none";
+    previewLabel.style.display = "block";
   });
 
   // Modal Interaction
