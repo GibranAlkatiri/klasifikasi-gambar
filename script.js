@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
       const label = data.label;
+      const confidence = data.confidence;
 
-      // Tampilkan hasil
       labelCell.textContent = label === 0 ? "Segar" : "Tidak Segar";
-      presentaseCell.textContent = "-";
+      presentaseCell.textContent = (confidence * 100).toFixed(2) + " %";
       deskripsiCell.textContent =
         label === 0
           ? "Ikan ini tergolong segar berdasarkan fitur visualnya."
