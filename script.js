@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Tambahkan timestamp unik untuk bypass cache
-      const apiUrl = new URL("https://web-production.up.railway.app/predict");
+      const apiUrl = new URL(
+        "https://web-production-02ce.up.railway.app/predict"
+      );
       apiUrl.searchParams.append("timestamp", Date.now());
 
       const response = await fetch(apiUrl.toString(), {
