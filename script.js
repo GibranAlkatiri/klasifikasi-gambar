@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const deskripsiCell = document.querySelector("tr:nth-child(3) td");
 
   classifyBtn.addEventListener("click", async () => {
+    labelCell.textContent = "-";
+    presentaseCell.textContent = "-";
+    deskripsiCell.textContent = "-";
+
     const file = fileInput.files[0];
     if (!file) {
       alert("Silakan pilih gambar terlebih dahulu!");
@@ -17,13 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("image", file);
 
     try {
-      const response = await fetch(
-        "https://web-production-02ce.up.railway.app/predict",
-        {
-          method: "POST",
-          body: formData,
-        }
+      // Tambahkan timestamp unik untuk bypass cache
+      const apiUrl = new URL(
+        "https://web-production-02ce.up.railway.app/predict"
       );
+      apiUrl.searchParams.append("timestamp", Date.now());
+
+      const response = await fetch(apiUrl.toString(), {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Gagal memproses gambar");
